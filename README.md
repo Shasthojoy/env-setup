@@ -18,7 +18,7 @@
 
 ```
 VERSION=v1.2.1
-OS=linux # or darwin
+OS=$(uname)
 URL=https://github.com/k0kubun/mitamae/releases/download/${VERSION}/mitamae-x86_64-${OS}
 
 wget $URL -O bin
