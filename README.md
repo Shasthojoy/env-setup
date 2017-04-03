@@ -10,6 +10,12 @@
 
 ## Usage
 
+### docker proxy conf
+
+```
+$ ./bin local -y docker.yml cookbook/docker/defautl.rb
+```
+
 ## Requirements
   - [mitamae](https://github.com/k0kubun/mitamae/releases)
 

@@ -9,6 +9,16 @@ when '16.04'
     ver = 'xenial'
 end
 
+node.reverse_merge!({
+    docker: {
+        proxy: {
+            http_proxy: "",
+            https_proxy: "",
+            dns_list: "",
+        }
+    }
+})
+
 [
 'apt-transport-https',
 'ca-certificates',
@@ -49,4 +59,20 @@ end
 execute 'usermod -aG docker $USER' do
     user 'root'
     not_if 'groups $USER |grep -q docker'
+end
+
+conf_dir = '/etc/systemd/system/docker.service.d'
+directory "#{conf_dir}" do
+    action :create
+    user 'root'
+end
+
+conf_path = "#{conf_dir}/proxy.conf"
+ps = node[:docker][:proxy]
+template "#{conf_path}" do
+    action :create
+    user 'root'
+    source 'templates/proxy.conf.erb'
+    variables(http_proxy: "#{ps[:http_proxy]}", https_proxy: "#{ps[:https_proxy]}", dns_list: "#{ps[:dns_list]}")
+    not_if "test -z #{node[:docker][:proxy]} || test -e #{conf_path}"
 end

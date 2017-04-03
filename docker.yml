@@ -1,0 +1,6 @@
+---
+docker: 
+    proxy:
+        http_proxy: "http://your/proxy:port"
+        https_proxy: "http://your/proxy:port"
+        dns_list: "your/dns/ip"
