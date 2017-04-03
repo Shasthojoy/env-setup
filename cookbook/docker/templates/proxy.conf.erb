@@ -1,5 +1,5 @@
 [Service]
-Environment="HTTP_PROXY=<%= @http_proxy %> HTTPS_PROXY=<%= @https_proxy %>"
+Environment=HTTP_PROXY=<%= @http_proxy %> HTTPS_PROXY=<%= @https_proxy %>
 Environment="DOCKER_DNS=--dns <%= @dns_list %>"
 ExecStart=
 ExecStart=/usr/bin/dockerd -H fd:// $DOCKER_DNS
