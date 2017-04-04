@@ -33,7 +33,7 @@ template '/etc/apt/sources.list.d/docker.list' do
     path '/tmp/docker.list'
     source 'templates/docker.list.erb'
     variables(version: "#{ver}")
-    not_if 'test -f /tmp/docker.list'
+    not_if 'test -e /etc/apt/sources.list.d/docker.list'
 end
 
 [
