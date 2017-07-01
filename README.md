@@ -23,9 +23,9 @@ $ ./bin local -y docker.yml cookbook/docker/defautl.rb
 - [See latst version](https://github.com/k0kubun/mitamae/releases/latest)
 
 ```
-VERSION=v1.2.1
+VERSION=v1.4.5
 OS=$(uname)
-URL=https://github.com/k0kubun/mitamae/releases/download/${VERSION}/mitamae-x86_64-${OS}
+URL=https://github.com/itamae-kitchen/mitamae/releases/download/${VERSION}/mitamae-x86_64-${OS}
 
 wget $URL -O bin
 ```
