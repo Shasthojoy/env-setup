@@ -1,0 +1,8 @@
+---
+gitlab_ci:
+    url: "http://gitlab.ts.com/ci"
+    token: ""
+    tags: "shell, mrb_linux"
+    untagged_jobs: no
+    lock_current_proj: no
+    executor: "shell"
