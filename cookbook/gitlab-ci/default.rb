@@ -13,8 +13,16 @@ package 'curl' do
     user 'root'
 end
 
-execute cmd
+execute cmd do
+    not_if "test -e /etc/apt/sources.list.d/runner_gitlab-ci-multi-runner.list"
+end
 
 package 'gitlab-ci-multi-runner' do
+    user 'root'
+end
+
+param = node[:gitlab_ci]
+regst_cmd = "gitlab-runner register --non-interactive --url #{param[:url]} --registration-token #{param[:token]} --executor #{param[:executor]} --tag-list \"#{param[:tags]}\" --run-untagged #{param[:untagged_jobs]} --locked #{param[:lock_current_proj]}"
+execute regst_cmd do
     user 'root'
 end
