@@ -1,5 +1,9 @@
-execute 'dependency' do
-   command 'brew install jq wget'
+%w(
+jq wget curl
+).each do |pkg|
+    package pkg do
+        user 'root'
+    end
 end
 
 execute 'download' do
