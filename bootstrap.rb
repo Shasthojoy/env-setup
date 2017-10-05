@@ -1,9 +1,10 @@
 module RecipeHelper
     def include_cookbook(name)
-        include_recipe File.join(__dir__, "cookbooks", name, "default.rb")
+        path = File.expand_path("../../../cookbook/#{name}", @recipe.path)
+        include_recipe path
     end
 end
 
-Itamae::Recipe::EvalContext.include(RecipeHelper)
+MItamae::RecipeContext.send(:include, RecipeHelper)
 
 include_recipe File.join("roles", node[:role], "default.rb")

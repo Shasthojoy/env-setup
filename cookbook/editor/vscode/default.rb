@@ -1,12 +1,10 @@
 case node[:platform]
 when 'darwin'
-    package 'neovim/neovim/neovim'
+    p "not supported"
 when 'debian'
 when 'ubuntu'
+    include_recipe "debian.rb"
+else
     p "not supported"
     return
-end
-
-execute 'pip3 install --upgrade neovim' do
-    user 'root'
 end
